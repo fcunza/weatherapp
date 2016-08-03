@@ -5,9 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using WeatherApp.Common;
 using WeatherApp.Dto;
 using WeatherApp.Middleware;
-using WeatherApp.Service.Common;
 
 namespace WeatherApp.Service.Controllers
 {
@@ -15,9 +15,9 @@ namespace WeatherApp.Service.Controllers
     {
         private readonly IWeatherResponseBuilder _weatherResponseBuilder;
 
-        public WeatherController()
+        public WeatherController(IWeatherResponseBuilder weatherResponseBuilder)
         {
-            _weatherResponseBuilder = new WeatherResponseBuilder(new WeatherRetrieverFactory());
+            _weatherResponseBuilder = weatherResponseBuilder;
         }
 
         public async Task<Weather> Post(WeatherRequest request)

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using WeatherApp.Dto;
 using WeatherApp.Middleware;
 using WeatherApp.Middleware.Api;
 
-namespace WeatherApp.Service.Common
+namespace WeatherApp.Common
 {
     public interface IWeatherResponseBuilder
     {
@@ -56,7 +56,7 @@ namespace WeatherApp.Service.Common
                 switch (source.ToLowerInvariant())
                 {
                     case "forecast":
-                        retriever = _weatherRetrieverFactory.GetWeatherRetriever(WeatherServiceSource.Forecast);                                                
+                        retriever = _weatherRetrieverFactory.GetWeatherRetriever(WeatherServiceSource.Forecast);
                         break;
                     case "openweathermap":
                         retriever = _weatherRetrieverFactory.GetWeatherRetriever(WeatherServiceSource.OpenWeaterMap);

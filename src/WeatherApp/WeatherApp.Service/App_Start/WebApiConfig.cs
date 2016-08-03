@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using WeatherApp.Service.App_Start;
 
 namespace WeatherApp.Service
 {
@@ -10,6 +11,9 @@ namespace WeatherApp.Service
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            IoCBuilder.Configure();
+
+            config.DependencyResolver = new UnityResolver(IoCBuilder.Container);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
